@@ -41,10 +41,10 @@ export function Layout({ children, activeTab, onTabChange, miroLink }: LayoutPro
       </div>
 
       {/* Body */}
-      <div className="flex flex-1 min-h-0">
+      <div className="flex flex-1 min-h-0 overflow-hidden">
 
         {/* Sidebar — desktop only */}
-        <aside className="hidden md:flex w-56 flex-shrink-0 bg-white border-r border-gray-200 flex-col">
+        <aside className="hidden md:flex w-56 flex-shrink-0 bg-white border-r border-gray-200 flex-col overflow-y-auto">
           {/* Logo */}
           <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-200">
             <div className="w-7 h-7 bg-indigo-600 rounded-md flex items-center justify-center flex-shrink-0">
