@@ -10,6 +10,11 @@ export function MatrixView() {
   const [selectedPhase, setSelectedPhase] = useState<Phase | null>(null);
   const [showAllTasks, setShowAllTasks] = useState(false);
   const [expandedPhases, setExpandedPhases] = useState<Set<string>>(new Set());
+  const [tappedCell, setTappedCell] = useState<string | null>(null);
+
+  const handleCellTap = (key: string) => {
+    setTappedCell(prev => prev === key ? null : key);
+  };
 
   const togglePhaseExpand = (phaseId: string) => {
     setExpandedPhases(prev => {
@@ -173,7 +178,7 @@ export function MatrixView() {
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-sm font-semibold text-gray-800">Stakeholder × phase matrix</h2>
-            <p className="text-xs text-gray-500 mt-0.5">Filter to a single stakeholder for inline descriptions · hover any cell for details</p>
+            <p className="text-xs text-gray-500 mt-0.5">Filter to a single stakeholder for inline descriptions · hover or tap any cell for details</p>
           </div>
         </div>
 
@@ -315,21 +320,32 @@ export function MatrixView() {
                             </div>
                           )
                         ) : (
-                          /* All stakeholders — hover tooltip */
-                          <div className="flex flex-col items-center gap-1.5 group relative">
-                            {phaseRole && (
-                              <>
-                                <RoleBadge role={phaseRole.role} size="sm" />
-                                <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-56 bg-gray-900 text-white text-xs rounded-lg p-2.5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 shadow-xl">
-                                  <div className="font-medium mb-1" style={{ color: phase.color === '#6366f1' ? '#a5b4fc' : phase.color }}>
-                                    {phase.name}
-                                  </div>
-                                  {phaseRole.description}
-                                  <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900" />
-                                </div>
-                              </>
-                            )}
-                          </div>
+                          /* All stakeholders — hover (desktop) or tap (mobile) tooltip */
+                          (() => {
+                            const cellKey = `${stakeholder.id}-${phase.id}`;
+                            const isTapped = tappedCell === cellKey;
+                            return (
+                              <div
+                                className="flex flex-col items-center gap-1.5 group relative cursor-pointer"
+                                onClick={() => phaseRole && handleCellTap(cellKey)}
+                              >
+                                {phaseRole && (
+                                  <>
+                                    <RoleBadge role={phaseRole.role} size="sm" />
+                                    <div className={`absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-56 bg-gray-900 text-white text-xs rounded-lg p-2.5 transition-opacity z-20 shadow-xl ${
+                                      isTapped ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none group-hover:opacity-100'
+                                    }`}>
+                                      <div className="font-medium mb-1" style={{ color: phase.color === '#6366f1' ? '#a5b4fc' : phase.color }}>
+                                        {phase.name}
+                                      </div>
+                                      {phaseRole.description}
+                                      <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900" />
+                                    </div>
+                                  </>
+                                )}
+                              </div>
+                            );
+                          })()
                         )}
                       </td>
                     );
