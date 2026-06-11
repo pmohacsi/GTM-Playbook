@@ -78,10 +78,35 @@ function createDefaultConfig(partial: Partial<GTMConfig>): GTMConfig {
   };
 }
 
+const SEED_CONFIG: GTMConfig = createDefaultConfig({
+  id: 'seed-archicad-31',
+  name: 'Archicad 31 Launch GTM',
+  description: 'This initiative is the GTM activation effort to convert 90% of existing perpetual licenses to subscriptions',
+  initiativeOwner: 'Pelin',
+  productArea: 'New version of the product focusing on performance improvements and collaboration features',
+  targetAudience: 'Persona 1 and 2',
+  launchType: 'full',
+  targetLaunchDate: '2027-01-10',
+  successMetric: '20% conversion in the 1st month, 60% within half yr, 10% by the next release',
+  status: 'active',
+  stakeholders: [
+    { stakeholderId: 'product-management',        personName: 'James'  },
+    { stakeholderId: 'product-marketing',         personName: 'Pelin'  },
+    { stakeholderId: 'marketing-creative',        personName: 'Hana'   },
+    { stakeholderId: 'product-enablement',        personName: 'Bence'  },
+    { stakeholderId: 'sales-enablement',          personName: 'Nick'   },
+    { stakeholderId: 'sales',                     personName: 'Zoli'   },
+    { stakeholderId: 'customer-success',          personName: 'Andi'   },
+    { stakeholderId: 'journey-design',            personName: 'Eszter' },
+    { stakeholderId: 'release-program-management', personName: 'Évi'   },
+    { stakeholderId: 'portfolio-leadership',      personName: 'Kpg'    },
+  ],
+});
+
 export const useGTMStore = create<GTMStore>()(
   persist(
     (set, get) => ({
-      configs: [],
+      configs: [SEED_CONFIG],
       activeConfigId: null,
 
       createConfig: (partial) => {
@@ -109,6 +134,6 @@ export const useGTMStore = create<GTMStore>()(
 
       getConfig: (id) => get().configs.find(c => c.id === id),
     }),
-    { name: 'gtm-configurator-storage' }
+    { name: 'gtm-configurator-storage-v2' }
   )
 );
