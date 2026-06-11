@@ -62,32 +62,31 @@ export function ConfigDetail({ configId, onBack }: ConfigDetailProps) {
   return (
     <div className="p-6">
       {/* Header */}
-      <div className="flex items-start gap-4 mb-5">
-        <button onClick={onBack} className="flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-900 transition-colors mt-1 flex-shrink-0">
-          <ArrowLeft className="w-4 h-4" />
-          All configurations
-        </button>
-        <div className="h-4 w-px bg-gray-300 mt-1 flex-shrink-0" />
-        <div className="flex-1 min-w-0">
-          <h1 className="text-xl font-bold text-gray-900">{config.name}</h1>
-          {config.description && <p className="text-sm text-gray-600 mt-0.5">{config.description}</p>}
-        </div>
-        <div className="flex items-center gap-2 flex-shrink-0">
-          <button
-            className="flex items-center gap-2 px-3 py-2 border border-dashed border-gray-300 text-gray-500 rounded-lg text-sm cursor-not-allowed"
-            title="Coming soon"
-            disabled
-          >
-            <Download className="w-3.5 h-3.5" />
-            Export to Jira
+      <div className="mb-5">
+        <div className="flex items-center justify-between gap-2 mb-2">
+          <button onClick={onBack} className="flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-900 transition-colors flex-shrink-0">
+            <ArrowLeft className="w-4 h-4" />
+            All configurations
           </button>
-          <button
-            onClick={() => { if (confirm('Delete this configuration?')) { deleteConfig(configId); onBack(); } }}
-            className="p-2 text-gray-500 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-          >
-            <Trash2 className="w-4 h-4" />
-          </button>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <button
+              className="flex items-center gap-2 px-3 py-2 border border-dashed border-gray-300 text-gray-500 rounded-lg text-sm cursor-not-allowed"
+              title="Coming soon"
+              disabled
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Export to Jira</span>
+            </button>
+            <button
+              onClick={() => { if (confirm('Delete this configuration?')) { deleteConfig(configId); onBack(); } }}
+              className="p-2 text-gray-500 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+            >
+              <Trash2 className="w-4 h-4" />
+            </button>
+          </div>
         </div>
+        <h1 className="text-xl font-bold text-gray-900">{config.name}</h1>
+        {config.description && <p className="text-sm text-gray-600 mt-0.5">{config.description}</p>}
       </div>
 
       {/* Framing / initiative parameters */}

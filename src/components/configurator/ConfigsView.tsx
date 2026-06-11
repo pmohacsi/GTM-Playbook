@@ -43,7 +43,7 @@ export function ConfigsView() {
     <div className="p-6 max-w-screen-xl mx-auto">
 
       {/* Page header + explanation */}
-      <div className="flex items-start justify-between gap-6 mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
         <div className="max-w-2xl">
           <h1 className="text-2xl font-bold text-gray-900 mb-1">GTM Initiative Configurator</h1>
           <p className="text-gray-600 text-sm leading-relaxed">
