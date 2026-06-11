@@ -7,6 +7,7 @@ interface LayoutProps {
   children: ReactNode;
   activeTab: Tab;
   onTabChange: (tab: Tab) => void;
+  miroLink: string;
 }
 
 const NAV_ITEMS: { tab: Tab; label: string; icon: typeof BookOpen }[] = [
@@ -15,7 +16,7 @@ const NAV_ITEMS: { tab: Tab; label: string; icon: typeof BookOpen }[] = [
   { tab: 'configs', label: 'GTM Initiative Configurator', icon: Settings  },
 ];
 
-export function Layout({ children, activeTab, onTabChange }: LayoutProps) {
+export function Layout({ children, activeTab, onTabChange, miroLink }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
 
@@ -29,7 +30,7 @@ export function Layout({ children, activeTab, onTabChange }: LayoutProps) {
           </span>
         </div>
         <a
-          href="https://miro.com/app/board/uXjVHHf0z04=/?share_link_id=87082451748"
+          href={miroLink}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold rounded-lg transition-colors flex-shrink-0"

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import type { } from 'react';
 import { Grid3X3, Layers, Users } from 'lucide-react';
 import { MatrixView } from './MatrixView';
 import { PhaseView } from './PhaseView';
@@ -6,8 +6,12 @@ import { StakeholderView } from './StakeholderView';
 
 type ViewMode = 'matrix' | 'phases' | 'stakeholder';
 
-export function ExploreView() {
-  const [viewMode, setViewMode] = useState<ViewMode>('matrix');
+interface ExploreViewProps {
+  viewMode: ViewMode;
+  onViewModeChange: (mode: ViewMode) => void;
+}
+
+export function ExploreView({ viewMode, onViewModeChange }: ExploreViewProps) {
 
   const tabs: { id: ViewMode; label: string; icon: typeof Grid3X3; description: string }[] = [
     { id: 'matrix', label: 'Full Matrix', icon: Grid3X3, description: 'Overview of all stakeholders across all phases' },
@@ -27,7 +31,7 @@ export function ExploreView() {
           {tabs.map(tab => (
             <button
               key={tab.id}
-              onClick={() => setViewMode(tab.id)}
+              onClick={() => onViewModeChange(tab.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
                 viewMode === tab.id
                   ? 'bg-white text-gray-900 shadow-sm'
