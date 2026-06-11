@@ -18,7 +18,7 @@ const NAV_ITEMS: { tab: Tab; label: string; shortLabel: string; icon: typeof Boo
 
 export function Layout({ children, activeTab, onTabChange, miroLink }: LayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="h-screen flex flex-col bg-gray-50 overflow-hidden">
 
       {/* Concept banner — sticky */}
       <div className="sticky top-0 z-50 bg-amber-50 border-b border-amber-200 px-4 py-2 md:px-6 md:py-2.5 flex items-center justify-between gap-3 flex-shrink-0">
