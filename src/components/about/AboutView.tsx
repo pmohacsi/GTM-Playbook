@@ -29,14 +29,14 @@ export function AboutView() {
       color: '#6366f1',
       bg: '#eef2ff',
       title: 'A clear goal',
-      body: 'Every GTM starts with defining the desired outcome: what customer, sales, adoption, or behavioral change should this initiative drive? That measurable goal is the north star for every decision that follows.',
+      body: 'Every GTM initiative starts with defining the desired outcome: what customer, sales, adoption, or behavioral change should this initiative drive? That measurable goal is the north star for every decision that follows.',
     },
     {
       icon: Users,
       color: '#8b5cf6',
       bg: '#f5f3ff',
       title: 'The right people',
-      body: 'GTM is never one team\'s job. Product, Marketing, Sales, CS, and Enablement each own a piece. A GTM works when everyone knows their role — and when those roles are explicit, not assumed.',
+      body: 'GTM is never one team\'s job. Product, Marketing, Sales, CS, and Enablement each own a piece. A GTM initiative works when everyone knows their role — and when those roles are explicit, not assumed.',
     },
     {
       icon: Layers,
@@ -65,7 +65,7 @@ export function AboutView() {
       points: [
         'This framework makes the implicit explicit: who owns what, when, and why — across every phase.',
         'Our 6-phase model gives you a shared language with every team you collaborate with.',
-        'The configurator lets you scope a real GTM: which phases, which tasks, who\'s responsible — for a specific initiative.',
+        'The configurator lets you scope a real GTM initiative: which phases, which tasks, who\'s responsible — for a specific initiative.',
       ],
     },
   ];
@@ -113,7 +113,7 @@ export function AboutView() {
 
       {/* Three pillars */}
       <div>
-        <h2 className="text-lg font-bold text-gray-900 mb-4">Three things every GTM needs</h2>
+        <h2 className="text-lg font-bold text-gray-900 mb-4">Three things every GTM initiative needs</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {pillars.map(p => (
             <div key={p.title} className="rounded-xl border border-gray-200 p-5 bg-white">
@@ -157,7 +157,7 @@ export function AboutView() {
         <div>
           <h2 className="text-lg font-bold text-gray-900">How our GTM Initiative works</h2>
           <p className="text-sm text-gray-600 mt-1">
-            Purpose, stakeholders, collaboration model, and governance — the complete picture of how we run a GTM and who is in the room.
+            Purpose, stakeholders, collaboration model, and governance — the complete picture of how we run a GTM initiative and who is in the room.
           </p>
         </div>
 
@@ -235,7 +235,7 @@ export function AboutView() {
           </div>
           <div className="p-4 rounded-xl bg-gray-50 border border-gray-200">
             <p className="font-medium text-gray-800 mb-1">Portfolio objectives</p>
-            <p>The strategic context guiding multiple GTM initiatives — ensuring individual GTMs serve larger business goals.</p>
+            <p>The strategic context guiding multiple GTM initiatives — ensuring individual GTM initiatives serve larger business goals.</p>
           </div>
         </div>
 

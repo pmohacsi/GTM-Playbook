@@ -567,7 +567,7 @@ export const PHASES: Phase[] = [
       },
       {
         id: 't6-9',
-        label: 'Capture learnings for the next release GTM',
+        label: 'Capture learnings for the next GTM initiative',
         description: 'Document what worked, what didn\'t, and what should be done differently in the next GTM cycle. Maintain a living GTM retrospective that improves the process over time.',
         whyItMatters: 'GTM quality compounds when learnings are captured and applied. Without institutional memory, each launch reinvents the wheel.',
         examples: [
